@@ -1,4 +1,19 @@
-# The acquisition chain
+# Paris-Saclay OHP Summer School 2023
+
+## Equipment
+
+### Hardware
+
+- Telescope: [Skywatcher ESPRIT 100 ED
+](https://inter-static.skywatcher.com/upfiles/en_download_caty01390352363.pdf)
+- Equatorial mount: [Skywatcher AZ-EQ6](https://inter-static.skywatcher.com/upfiles/en_download_caty01353096919.pdf)
+- Camera: [ZWO ASI 2600 MM Cool](https://astronomy-imaging-camera.com/manuals/ASI2600_Manual_EN.pdf)
+- Filter wheel: [ZWO EFW](https://astronomy-imaging-camera.com/manuals/EFW%20QuickGuide.pdf)
+
+### Software
+
+
+## The acquisition chain
 
 The signal S(**x**) measured in DN (Digital Number) by the detector is equal to
 
@@ -31,6 +46,13 @@ The objective of the calibration of the detector is to be able to determine I'(*
 
 - The gain g(**x**) and read noise R(**x**) can be measured simultaneously using a method called the [Photon Transfer Curve (PTC)](ptc.ipynb) analysis.
 
-- The PTC analysis will typically provide the mean value of the gain over the detector. The pixel-to-pixel variations of the gain are called the '[flat-field](flats.ipynb)' and can be measured using a uniform light source. By extension, the term flat-field is used to describe the combination of all the mutiplicative terms that affect the spatial variations of the response of the instrument (*e.g.* the vignetting).  
+- The PTC analysis will typically provide the mean value of the gain over the detector. The pixel-to-pixel variations of the gain are called the '[flat-field](flats.ipynb)' and can be measured using a uniform light source. By extension, the term flat-field is used to describe the combination of all the multiplicative terms that affect the spatial variations of the response of the instrument (*e.g.* the vignetting).  
 
 It is worth noting that thermal electrons cannot be distinguished from photo-electrons. They obey to the same Poisson statistics. 
+
+## Targets
+
+- Messier 31 (galaxy)
+- NGC 7000 (emission nebula)
+- Veil nebula (supernova remnant)
+- Messier 13 (globular cluster).
