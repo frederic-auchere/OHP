@@ -50,6 +50,9 @@ The objective of the calibration of the detector is to be able to determine I'(*
 
 It is worth noting that thermal electrons cannot be distinguished from photo-electrons. They obey to the same Poisson statistics. 
 
+## Exposure time *vs.* number of images
+
+
 ## Targets
 
 - Messier 31 (galaxy)
