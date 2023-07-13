@@ -178,3 +178,9 @@ def read_raw_dslr(file,
     else:
 
         raise FileNotFoundError('read_raw_dslr: ' + file + ' not found')
+
+
+def save_calibration_frame(filename, data, dictionary):
+    header = fits.Header()
+    header.update(dictionary)
+    fits.writeto(filename, data, header, overwrite=True)
