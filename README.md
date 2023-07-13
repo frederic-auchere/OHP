@@ -42,7 +42,7 @@ S(**x**) = g(**x**) * [ t * I'(**x**) + R(**x**) ] + g(**x**) * t * N(**x**, T) 
 
 The objective of the calibration of the detector is to be able to determine I'(**x**) knowing the measure signal S(**x**).
 
-- The last two terms can be measured by taking '[dark frames](darks.ipynb)', *i.e.* images taken without illuminating the detector.
+- The last two terms ([bias](bias.ipynb) + thermal signal) can be measured by taking '[dark frames](darks.ipynb)', *i.e.* images taken without illuminating the detector.
 
 - The gain g(**x**) and read noise R(**x**) can be measured simultaneously using a method called the [Photon Transfer Curve (PTC)](ptc.ipynb) analysis.
 
