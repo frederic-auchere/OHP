@@ -1,5 +1,7 @@
 # Paris-Saclay OHP Summer School 2023
 
+![](https://cdn.astrobin.com/thumbs/OS7EC3O2LtRX_16536x0_b9muqi8S.jpg)
+ESPRIT 100 ED / Canon EOS 6D / 10 hours
 ## Equipment
 
 ### Hardware
@@ -25,22 +27,26 @@ where:
 - &#0951; is the quantum yield, *i.e.* the number of photo-electrons created per interacting photon.
 - QE(**x**) is the quantum efficiency, *i.e.* the fraction of incident photons interacting with the detector.
 - g(**x**) is the gain of the detector, *i.e.* the number of DN per photo-electron.
-- N(**x**, T) is the thermal signal, in electrons per second, function of the temperature T.
-- t is the exposure time.
+- N(**x**, T) is the thermal signal, function of the temperature T, in electrons per second.
+- t is the exposure time, in seconds.
 - R(**x**) is the read noise, in electrons.
 - B(**x**) is the bias of the Analog to Digital Converter(s) (ADC), *i.e.* the output value that corresponds to zero incident intensity, in DN per electron. The bias is set to a positive value to avoid clipping of faint signals to zero.
+
+It is important to note that for a given pixel, I(**x**), N(**x**, T) and R(**x**) are functions of time because of the statistical fluctuations of the photon and thermal signals, and because of the noise in the readout electronics. I, N and R must thus be understood as random variables.
 
 The above equation can be rewritten:
 
 S(**x**) = g(**x**) * [ t * &#0951; * QE(**x**) * I(**x**) + R(**x**) ] + g(**x**) * t * N(**x**, T) + B(**x**)
 
-At visible wavelengths, the quantum yield &#0951; can be assumed to be equal to 1.
-
-We do not have the capability here to measure the QE, but the relevant quantity for the statistics is I'(**x**) = QE(x) * I(x), *i.e.* the number of detected photons. We thus have 
+At visible wavelengths, the quantum yield &#0951; can be assumed to be equal to 1. We do not have the capability here to measure the QE, but the relevant quantity for the statistics in the image is I'(**x**) = QE(x) * I(x), *i.e.* the number of detected photons. We thus have 
 
 S(**x**) = g(**x**) * [ t * I'(**x**) + R(**x**) ] + g(**x**) * t * N(**x**, T) + B(**x**)
 
-The objective of the calibration of the detector is to be able to determine I'(**x**) knowing the measure signal S(**x**).
+As mentioned above, I, N and R are random variables, and therefore so is the measured signal S. In an image, the value measured in a pixel can be understood as an estimate of the average of the random variable affected by random fluctuations (noise).
+
+The objective of the calibration of the detector is to be able to determine I'(**x**) knowing the measure signal S(**x**). 
+
+R(**x**) has zero mean and is . we subtract the mean of the random variables. 
 
 - The last two terms ([bias](bias.ipynb) + thermal signal) can be measured by taking '[dark frames](darks.ipynb)', *i.e.* images taken without illuminating the detector.
 
