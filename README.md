@@ -1,6 +1,6 @@
 # Paris-Saclay OHP Summer School 2023
 
-![](https://cdn.astrobin.com/thumbs/OS7EC3O2LtRX_16536x0_b9muqi8S.jpg)
+![](ngc7000.jpg)
 ESPRIT 100 ED / Canon EOS 6D / 10 hours
 ## Equipment
 
