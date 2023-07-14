@@ -4,3 +4,4 @@ Pillow~=10.0.0
 PyExifTool~=0.5.5
 rawkit~=0.6
 tqdm~=4.65
+matplotlib~=3.7.2
