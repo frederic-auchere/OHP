@@ -1,5 +1,9 @@
 # Paris-Saclay OHP Summer School 2023
 
+Our objective will be to build collectively images of the [NGC 7000](https://en.wikipedia.org/wiki/North_America_Nebula) / [IC 5070 / IC 5067](https://en.wikipedia.org/wiki/Pelican_Nebule) complex, *a.k.a.* the North America and Pelican nebulae. We will acquire and reduce the date necessary to produce an image in 'natural' RGB colors and in 'false color' narrow band (SII, H&#0945;, OII). 
+
+Beyond making pretty pictures, our objective will be to understand the data acquisition chain and the calibration process. This will be performed using a [refracting telescope](https://en.wikipedia.org/wiki/Refracting_telescope), a camera and filters, all commercially available. . We will measure the physical properties of the [CMOS sensor](https://en.wikipedia.org/wiki/Active-pixel_sensor), understand the sources of noise in the data, and derive the optimum acquisition parameters. The principles and methods exposed are generic and applicable to amateur equipment and professional giant telescopes alike.
+
 ![](ngc7000.jpg)
 ESPRIT 100 ED / Canon EOS 6D / 10 hours
 ## Equipment
@@ -19,9 +23,6 @@ https://www.baader-planetarium.com/en/filters/(ultra-)-narrowband-/-highspeed/ba
 - Equatorial mount driver: [EQASCOM](https://eq-mod.sourceforge.net/eqaindex.html) 
 - Sequencer: [Astro Photography Tool (APT)](https://astrophotography.app/)
 
-## Objectives
-
-- The objective of the proposed activities is to demonstrate the principles of data acquisition and reduction. 
 
 ## The acquisition chain
 
@@ -70,18 +71,10 @@ The standard deviation of the noise in a single frame is obtained by taking the 
 
 &#0963;&#0178; = &#0963;_r&#0178; + t * (I + N)  
 
-with t the exposure time and I and N respectively the photon and thermal signals per unit time. When stacking (summing) n frames, the noises add quadratically and the noise in the resulting image is thus simply given by
+with t the exposure time and I and N respectively the photon and thermal signals, in electrons per second. When stacking (summing) n frames, the noises add quadratically and the noise in the resulting image is thus simply given by
 
 &#0963;&#0178; = n * [ &#0963;_r&#0178; + t * (I + N) ]  
 
-The photon signal is itself the sum of the signal A from the astronomical object of interest and of the sky background brightness Sk
+The photon signal is itself the sum of the signal A from the astronomical object of interest and of the sky background brightness K
 
-&#0963;&#0178; = n * [ &#0963;_r&#0178; + t * (A + Sk + N) ]  
-
-
-## Targets
-
-- Messier 31 (galaxy)
-- NGC 7000 (emission nebula)
-- Veil nebula (supernova remnant)
-- Messier 13 (globular cluster).
+&#0963;&#0178; = n * [ &#0963;_r&#0178; + t * (A + K + N) ]
