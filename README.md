@@ -81,9 +81,9 @@ Looking at the characteristics of the [ZWO ASI 2600 MM Cool](https://astronomy-i
 
 The bias value of the ADC needs to be chosen so that the value are not This will be looked at in the [bias notebook](bias.ipynb). 
 
-### 3.3 Exposure time *vs.* number of images
+### 3.3 Exposure time
 
-Deeps sky objects require long exposures, typically several hours. One could either take a single very long exposure, or take multiple shorter exposures and sum (or stack) them up to the same equivalent total exposure time:
+Deep sky objects require long exposures, typically several hours. One could either take a single very long exposure, or take multiple shorter exposures and sum (or stack) them up to the same equivalent total exposure time:
 
 - A single frame is in theory the best in terms of noise (see below), but requires perfect guiding and will be ruined by trails from planes and satellites, and possibly by clouds.
 - Stacking multiple images will result in more noise (see below), but guiding does not have to be as good, and trails can easily be removed in post-processing.
