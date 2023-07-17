@@ -10,10 +10,18 @@ ESPRIT 100 ED / Canon EOS 6D / 10 hours
 ](https://inter-static.skywatcher.com/upfiles/en_download_caty01390352363.pdf)
 - Equatorial mount: [Skywatcher AZ-EQ6](https://inter-static.skywatcher.com/upfiles/en_download_caty01353096919.pdf)
 - Camera: [ZWO ASI 2600 MM Cool](https://astronomy-imaging-camera.com/manuals/ASI2600_Manual_EN.pdf)
-- Filter wheel: [ZWO EFW](https://astronomy-imaging-camera.com/manuals/EFW%20QuickGuide.pdf)
+- Filter wheel: [ZWO EFW](https://astronomy-imaging-camera.com/manuals/EFW%20QuickGuide.pdf
+- Filters: broad band [Luminance, Red, Green, Blue](https://www.baader-planetarium.com/en/filters/l-rgb-cmos-filters/baader-lrgb-filter-set-%E2%80%93-cmos-optimized.html) and narrow band (6 nm) [SII, H&#0945;, OIII](
+https://www.baader-planetarium.com/en/filters/(ultra-)-narrowband-/-highspeed/baader-6.5nm-narrowband-filter-set-%E2%80%93-cmos-optimized-(h-alpha--o-iii--s-ii).html)
 
 ### Software
 
+- Equatorial mount driver: [EQASCOM](https://eq-mod.sourceforge.net/eqaindex.html) 
+- Sequencer: [Astro Photography Tool (APT)](https://astrophotography.app/)
+
+## Objectives
+
+- The objective of the proposed activities is to demonstrate the principles of data acquisition and reduction. 
 
 ## The acquisition chain
 
@@ -57,6 +65,18 @@ R(**x**) has zero mean and is . we subtract the mean of the random variables.
 It is worth noting that thermal electrons cannot be distinguished from photo-electrons. They obey to the same Poisson statistics. 
 
 ## Exposure time *vs.* number of images
+
+The standard deviation of the noise in a single frame is obtained by taking the quadratic sum of the standard deviation of the read noise &#0963;_r
+
+&#0963;&#0178; = &#0963;_r&#0178; + t * (I + N)  
+
+with t the exposure time and I and N respectively the photon and thermal signals per unit time. When stacking (summing) n frames, the noises add quadratically and the noise in the resulting image is thus simply given by
+
+&#0963;&#0178; = n * [ &#0963;_r&#0178; + t * (I + N) ]  
+
+The photon signal is itself the sum of the signal A from the astronomical object of interest and of the sky background brightness Sk
+
+&#0963;&#0178; = n * [ &#0963;_r&#0178; + t * (A + Sk + N) ]  
 
 
 ## Targets
