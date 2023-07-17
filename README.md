@@ -77,7 +77,7 @@ E(**x**) = [ S(*x**) - D(**x**) ] / [ g(**x**) * t ]
 
 Looking at the characteristics of the [ZWO ASI 2600 MM Cool](https://astronomy-imaging-camera.com/manuals/ASI2600_Manual_EN.pdf), the gain setting of 100 is a good compromise between dynamic range and read noise. Note that this 'gain' value of 100 is *not* the gain as defined above. It is a setting value in arbitrary units, to which corresponds a true gain (as expressed in DN / electron), as measured in the [ptc](ptc.ipynb) notebook.
 
-### 3.2 Offset bias
+### 3.2 Bias
 
 The bias value of the ADC needs to be chosen so that the value are not This will be looked at in the [bias notebook](bias.ipynb). 
 
@@ -102,14 +102,14 @@ The first term is the variance from the shot noise of the astronomical object, w
 
 The last two terms are the variance of the noises from the parasitic sources: read noise, sky background and thermal signal. With a cooled camera, the thermal noise can easily be negligible before the sky background. The ratio 
 
-R = [ &#0963;_r&#0178; + t * K ] / [ t * K ]
+R = ( &#0963;_r&#0178; + t * K ) / ( t * K )
 
 represents the noise relative to the ideal detector case (no read noise, no thermal noise). Interestingly, it does not depend upon the number of exposures. We can then define a maximum acceptable value for this ratio, so that 
 
 R < (1 + &#0949;)&#0178;
 
-with &#0949; representing the acceptable increase in noise, *e.g* 0.01 for 1%. We then derive the corresponding exposure time.
+with &#0949; representing the acceptable increase in noise, *e.g.* 0.1 for 10%. We then derive the corresponding exposure time
 
 t = &#0963;_r&#0178; / { K * [ (1 + &#0949;)&#0178; - 1] }
 
-Exposure times larger than that will only provide marginal reduction of the noise in the stack. For a given &#0949;, the optimum exposure time thus proportional to the ratio &#0963;_r&#0178; / K. The higher the read noise, the longer the required exposure time. The brighter the sky background, the shorter the required exposure time.  
+Exposure times larger than that will only provide marginal reduction of the noise in the stack. For a given &#0949;, the optimum exposure time thus proportional to the ratio &#0963;_r&#0178; / K. The higher the read noise, the longer the required exposure time. The brighter the sky background, the shorter the required exposure time. For example, for a read noise of 1.4 electrons, a [sky brightness](sky.ipynb) of 0.35 electrons, one gets t = 27 s for &#0949; = 0.1 (10% acceptable increase).
