@@ -85,19 +85,31 @@ The bias value of the ADC needs to be chosen so that the value are not This will
 
 Deeps sky objects require long exposures, typically several hours. One could either take a single very long exposure, or take multiple shorter exposures and sum (or stack) them up to the same equivalent total exposure time:
 
-- A single frame is in theory the best in terms of noise (see below), but requires perfect guiding, will be ruined by trails from planes and satellites and possibly by clouds.
+- A single frame is in theory the best in terms of noise (see below), but requires perfect guiding and will be ruined by trails from planes and satellites, and possibly by clouds.
 - Stacking multiple images will result in more noise (see below), but guiding does not have to be as good, and trails can easily be removed in post-processing.
 
-As we will see below, there is an objective way to determine the maximum exposure time that is useful for individual frames in the stack.
+As we will see below, there is an objective way to determine the optimal exposure time for individual frames in the stack.
 
-The standard deviation of the noise in a single frame is obtained by taking the quadratic sum of the standard deviation of the read noise &#0963;_r
+In a single frame, the variance of the noise is the sum of the variances of the read noise &#0963;_r and of the signal. Since the signal has Poisson statistics, its variance is t * (I + N), with t the exposure time and I and N respectively the photon and thermal signals, in electrons per second. When stacking (summing) n frames, the noises add quadratically and the variance in the resulting image is thus given by
 
-&#0963;&#0178; = &#0963;_r&#0178; + t * (I + N)  
+&#0963;&#0178; = n * [ t * (I + N) + &#0963;_r&#0178; ]
 
-with t the exposure time and I and N respectively the photon and thermal signals, in electrons per second. When stacking (summing) n frames, the noises add quadratically and the noise in the resulting image is thus simply given by
+We decompose the photon signal I as the sum of the signal A from the astronomical object of interest and of the [sky background brightness](sky.ipynb) K, and rewrite the above as
 
-&#0963;&#0178; = n * [ &#0963;_r&#0178; + t * (I + N) ]  
+&#0963;&#0178; = n * t * A + n * [ t * (K + N) + &#0963;_r&#0178; ] 
 
-The photon signal is itself the sum of the signal A from the astronomical object of interest and of the sky background brightness K
+The first term is the variance from the shot noise of the astronomical object, which depends only upon the total exposure time n * t. For that term, there is no difference between a single long exposure and several shorter ones.
 
-&#0963;&#0178; = n * [ &#0963;_r&#0178; + t * (A + K + N) ]
+The last two terms are the variance of the noises from the parasitic sources: read noise, sky background and thermal signal. With a cooled camera, the thermal noise can easily be negligible before the sky background. The ratio 
+
+R = [ &#0963;_r&#0178; + t * K ] / [ t * K ]
+
+represents the noise relative to the ideal detector case (no read noise, no thermal noise). Interestingly, it does not depend upon the number of exposures. We can then define a maximum acceptable value for this ratio, so that 
+
+R < (1 + &#0949;)&#0178;
+
+with &#0949; representing the acceptable increase in noise, *e.g* 0.01 for 1%. We then derive the corresponding exposure time.
+
+t = &#0963;_r&#0178; / { K * [ (1 + &#0949;)&#0178; - 1] }
+
+Exposure times larger than that will only provide marginal reduction of the noise in the stack. For a given &#0949;, the optimum exposure time thus proportional to the ratio &#0963;_r&#0178; / K. The higher the read noise, the longer the required exposure time. The brighter the sky background, the shorter the required exposure time.  
