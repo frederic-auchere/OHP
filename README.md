@@ -26,15 +26,15 @@ https://www.baader-planetarium.com/en/filters/(ultra-)-narrowband-/-highspeed/ba
 
 ## The acquisition chain
 
-The signal S(**x**) measured in DN (Digital Number) by the detector is equal to
+The signal S(**x**) measured in DN (Digital Number, *a.k.a.* ADU, Analog to Digital Unit) by the detector is equal to
 
-S(**x**) = g(**x**) * [ t * ( &#0951; * QE(**x**) * I(**x**) + N(**x**, T) ) + R(**x**) ] + B(**x**)
+S(**x**) = g(**x**) * [ t * ( Q(**x**, &#0955;) * I(**x**) + N(**x**, T) ) + R(**x**) ] + B(**x**)
 
 where:
 - **x** is the vector position on the detector.
+- &#0955; is the wavelength.
 - I(**x**) is the intensity incident on the detector, in photons per second.
-- &#0951; is the quantum yield, *i.e.* the number of photo-electrons created per interacting photon.
-- QE(**x**) is the quantum efficiency, *i.e.* the fraction of incident photons interacting with the detector.
+- Q(**x**, &#0955;) is the [external quantum efficiency](https://en.wikipedia.org/wiki/Quantum_efficiency) (EQE), *i.e.* the number of photo-electrons created per incident photon.
 - g(**x**) is the gain of the detector, *i.e.* the number of DN per photo-electron.
 - N(**x**, T) is the thermal signal, function of the temperature T, in electrons per second.
 - t is the exposure time, in seconds.
@@ -45,13 +45,13 @@ It is important to note that for a given pixel, I(**x**), N(**x**, T) and R(**x*
 
 The above equation can be rewritten:
 
-S(**x**) = g(**x**) * [ t * &#0951; * QE(**x**) * I(**x**) + R(**x**) ] + g(**x**) * t * N(**x**, T) + B(**x**)
+S(**x**) = g(**x**) * [ t * Q(**x**) * I(**x**) + R(**x**) ] + g(**x**) * t * N(**x**, T) + B(**x**)
 
-At visible wavelengths, the quantum yield &#0951; can be assumed to be equal to 1. We do not have the capability here to measure the QE, but the relevant quantity for the statistics in the image is I'(**x**) = QE(x) * I(x), *i.e.* the number of detected photons. We thus have 
+We do not have the capability here to measure the EQE, but anyway the relevant quantity to compute the [photon shot noise](https://en.wikipedia.org/wiki/Shot_noise) in the image is E(**x**) = EQE(x) * I(x), *i.e.* the number of electrons. We thus have 
 
-S(**x**) = g(**x**) * [ t * I'(**x**) + R(**x**) ] + g(**x**) * t * N(**x**, T) + B(**x**)
+S(**x**) = g(**x**) * [ t * E(**x**) + R(**x**) ] + g(**x**) * t * N(**x**, T) + B(**x**)
 
-As mentioned above, I, N and R are random variables, and therefore so is the measured signal S. In an image, the value measured in a pixel can be understood as an estimate of the average of the random variable affected by random fluctuations (noise).
+As mentioned above, E, N and R are random variables, and therefore so is the measured signal S. In an image, the value measured in a pixel can be understood as an estimate of the average of the random variable affected by random fluctuations (noise).
 
 The objective of the calibration of the detector is to be able to determine I'(**x**) knowing the measure signal S(**x**). 
 
@@ -61,9 +61,9 @@ R(**x**) has zero mean and is . we subtract the mean of the random variables.
 
 - The gain g(**x**) and read noise R(**x**) can be measured simultaneously using a method called the [Photon Transfer Curve (PTC)](ptc.ipynb) analysis.
 
-- The PTC analysis will typically provide the mean value of the gain over the detector. The pixel-to-pixel variations of the gain are called the '[flat-field](flats.ipynb)' and can be measured using a uniform light source. By extension, the term flat-field is used to describe the combination of all the multiplicative terms that affect the spatial variations of the response of the instrument (*e.g.* the vignetting).  
+- The PTC analysis will typically provide the mean value of the gain over the detector. The pixel-to-pixel variations of the gain are called the '[flat-field](flats.ipynb)' and can be measured using a uniform light source. By extension, the term flat-field is used to describe the combination of all the multiplicative terms that affect the spatial variations of the response of the instrument (*e.g.* the [vignetting](https://en.wikipedia.org/wiki/Vignetting)).  
 
-It is worth noting that thermal electrons cannot be distinguished from photo-electrons. They obey to the same Poisson statistics. 
+It is worth noting that thermal electrons cannot be distinguished from photo-electrons. They obey to the same [Poisson statistics](https://en.wikipedia.org/wiki/Poisson_distribution). 
 
 ## Exposure time *vs.* number of images
 
