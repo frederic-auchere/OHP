@@ -103,11 +103,11 @@ S(**x**) = g(**x**) * [ t * E(**x**) + R(**x**) ] + g(**x**) * t * N(**x**, T) +
 
 The objective of the calibration of the detector is to invert the above equation to be able to determine E(**x**) knowing the measured signal S(**x**). As mentioned above, N and R are random variables. As such, it is impossible to know the exact value taken by each one during a given data acquisition. All we can determine - and correct for - is the mean (denoted <>) of these random variables. In addition, we note that the read noise R(**x**) has zero mean. We can thus now write the calibration equation as 
 
-E(**x**) = { S(*x**) - [ g(**x**) * t * < N >(**x**, T) + B(**x**) ] } / [ g(**x**) * t ]
+E(**x**) = { S(**x**) - [ g(**x**) * t * < N >(**x**, T) + B(**x**) ] } / [ g(**x**) * t ]
 
 or, with D(**x**) = g(**x**) * t * < N >(**x**, T) + B(**x**)
 
-E(**x**) = [ S(*x**) - D(**x**) ] / [ g(**x**) * t ]
+E(**x**) = [ S(**x**) - D(**x**) ] / [ g(**x**) * t ]
 
 
 - D(**x**), sum of the thermal signal and [bias](bias.ipynb), can be measured by taking '[dark frames](darks.ipynb)', *i.e.* images taken without illuminating the detector.
