@@ -11,6 +11,19 @@ ESPRIT 100 ED / Canon EOS 6D / 10 hours
 
 Beyond making pretty pictures, our objective will be to understand the data acquisition chain and the calibration process. This will be performed using a [refracting telescope](https://en.wikipedia.org/wiki/Refracting_telescope), a camera and filters, all commercially available. . We will measure the physical properties of the [CMOS sensor](https://en.wikipedia.org/wiki/Active-pixel_sensor), understand the sources of noise in the data, and derive the optimum acquisition parameters. The principles and methods exposed are generic and applicable to amateur equipment and professional giant telescopes alike.
 
+Using Python notebooks, wwill
+
+- Determine the optimal bias of the camera ([notebook](bias.ipynb))
+- Measure the dark signal of the sensor ([notebook](darks.ipynb))
+- Measure the flat field of the system ([notebook](flats.ipynb))
+- Measure the read noise of the camera (in electrons) ([notebook](ptc.ipynb))
+- Measure the gain of the camera (in electrons / DN) ([notebook](ptc.ipynb))
+- Measure the sky background (in electrons) ([notebook](sky.ipynb))
+- Determine the optimal exposure time ([notebook](exposure.ipynb))
+- Stack the individual frames ([Siril](https://www.siril.org/), [old website](https://free-astro.org/index.php?title=Siril))
+- Composite the channels into color pictures ([Siril](https://www.siril.org/), [old website](https://free-astro.org/index.php?title=Siril))
+
+
 ## 1. Equipment
 
 ### 1.1 Hardware
@@ -119,34 +132,4 @@ Deep sky objects require long exposures, typically several hours. One could eith
 - A single frame is in theory the best in terms of noise (see below), but requires perfect guiding and will be ruined by trails from planes and satellites, and possibly by clouds.
 - Stacking multiple images will result in more noise (see below), but guiding does not have to be as good, and trails can easily be removed in post-processing.
 
-As we will see below, there is an objective way to determine the optimal exposure time for individual frames in the stack.
-
-In a single frame, the variance of the noise is the sum of the variances of the read noise &#0963;_r and of the signal. Since the signal has Poisson statistics, its variance is t * (I + N), with t the exposure time and I and N respectively the photon and thermal signals, in electrons per second. When stacking (summing) n frames, the noises add quadratically and the variance in the resulting image is thus given by
-
-&#0963;&#0178; = n * [ t * (I + N) + &#0963;_r&#0178; ]
-
-We decompose the photon signal I as the sum of the signal A from the astronomical object of interest and of the [sky background brightness](sky.ipynb) K, and rewrite the above as
-
-&#0963;&#0178; = n * t * A + n * [ t * (K + N) + &#0963;_r&#0178; ] 
-
-The first term is the variance from the shot noise of the astronomical object, which depends only upon the total exposure time n * t. For that term, there is no difference between a single long exposure and several shorter ones.
-
-The last two terms are the variance of the noises from the parasitic sources: read noise, sky background and thermal signal. With a cooled camera, the thermal noise can easily be negligible before the sky background. The ratio 
-
-R = ( &#0963;_r&#0178; + t * K ) / ( t * K )
-
-represents the noise relative to the ideal detector case (no read noise, no thermal noise). Interestingly, it does not depend upon the number of exposures. We can then define a maximum acceptable value for this ratio, so that 
-
-R < (1 + &#0949;)&#0178;
-
-with &#0949; representing the acceptable increase in noise, *e.g.* 0.1 for 10%. We then derive the corresponding exposure time
-
-t = &#0963;_r&#0178; / { K * [ (1 + &#0949;)&#0178; - 1] }
-
-Exposure times larger than that will only provide marginal reduction of the noise in the stack. For a given &#0949;, the optimum exposure time thus proportional to the ratio &#0963;_r&#0178; / K. The higher the read noise, the longer the required exposure time. The brighter the sky background, the shorter the required exposure time.
-
-For example, for a read noise of 1.4 electrons, a [sky brightness](sky.ipynb) of 0.35 electrons, one gets
-
-t = 27 s
-
-for &#0949; = 0.1 (10% acceptable noise increase). This is to be compared with the maximum exposure time allowed by the tracking system (see [1.3.3](#133-tracking)).
+As demonstrated in the [exposure time](exposure.ipynb) notebook, there is an objective way to determine the optimal exposure for individual frames in the stack.
