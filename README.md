@@ -149,4 +149,4 @@ For example, for a read noise of 1.4 electrons, a [sky brightness](sky.ipynb) of
 
 t = 27 s
 
-for &#0949; = 0.1 (10% acceptable noise increase). This is to be compared with the maximum exposure time allowed by the tracking system (see [1.3.3](#Tracking)).
+for &#0949; = 0.1 (10% acceptable noise increase). This is to be compared with the maximum exposure time allowed by the tracking system (see [1.3.3](#133-tracking)).
