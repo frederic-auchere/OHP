@@ -11,7 +11,7 @@ ESPRIT 100 ED / Canon EOS 6D / 10 hours
 
 Beyond making pretty pictures, our objective will be to understand the data acquisition chain and the calibration process. This will be performed using a [refracting telescope](https://en.wikipedia.org/wiki/Refracting_telescope), a camera and filters, all commercially available. . We will measure the physical properties of the [CMOS sensor](https://en.wikipedia.org/wiki/Active-pixel_sensor), understand the sources of noise in the data, and derive the optimum acquisition parameters. The principles and methods exposed are generic and applicable to amateur equipment and professional giant telescopes alike.
 
-Using Python notebooks, wwill
+Using Python notebooks, we will
 
 - Determine the optimal bias of the camera ([notebook](bias.ipynb))
 - Measure the dark signal of the sensor ([notebook](darks.ipynb))
@@ -20,9 +20,10 @@ Using Python notebooks, wwill
 - Measure the gain of the camera (in electrons / DN) ([notebook](ptc.ipynb))
 - Measure the sky background (in electrons) ([notebook](sky.ipynb))
 - Determine the optimal exposure time ([notebook](exposure.ipynb))
-- Stack the individual frames ([Siril](https://www.siril.org/), [old website](https://free-astro.org/index.php?title=Siril))
-- Composite the channels into color pictures ([Siril](https://www.siril.org/), [old website](https://free-astro.org/index.php?title=Siril))
 
+Then, using ([Siril](https://www.siril.org/), [old website](https://free-astro.org/index.php?title=Siril)), we will
+- Stack the individual frames 
+- Composite the channels into color pictures
 
 ## 1. Equipment
 
@@ -64,14 +65,14 @@ with D = 0.1 m the diameter of the objective lens. In the green, this correspond
 | G        | 530          | 1.09          | 2.49            | 3.35            |
 | R        | 640          | 1.32          | 2.60            | 3.43            |
 | H&#0945; | 656          | 1.35          | 2.61            | 3.44            |
-|SII       | 672          | 1.38          | 2.63            | 3.45            |
+| SII      | 672          | 1.38          | 2.63            | 3.45            |
 
 While the optical resolution values differ by 30%, the effective resolution varies by 8% with 2" seeing and by 4% with 3". At 2" seeing, the system does not satisfy the
 [Nyquist–Shannon sampling theorem](https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem), which requires a sampling of 1.2" / pixel in the blue. 
 
 #### 1.3.3 Tracking
 
-The equatorial mount is tracking very accurately, with compensation of the periodic error down to ~1" rms. However, there is no active guiding. This means that long exposures will be affected by drift caused by polar alignment errors. The measured drift rate is typically 0.5" / minute. If we allow a total drift during an exposure to be 1/10th the PSF (so that the effect is negligible), the exposure time is limited to 30 s with 2" seeing.
+The equatorial mount is tracking very accurately, with compensation of the periodic error down to ~1" rms. However, there is no active guiding. This means that long exposures will be affected by drift caused by polar alignment errors. The measured drift rate is typically 0.5" / minute. If we allow a total drift during an exposure to be 1/10th the PSF (so that the effect is negligible), the exposure time is limited to 30s with 2" seeing. Exposures of 90s induce a drift of ~1/3 PSF with 2" seeing, which can be marginally acceptable.  
 
 ## 2. The acquisition chain
 
@@ -133,3 +134,7 @@ Deep sky objects require long exposures, typically several hours. One could eith
 - Stacking multiple images will result in more noise (see below), but guiding does not have to be as good, and trails can easily be removed in post-processing.
 
 As demonstrated in the [exposure time](exposure.ipynb) notebook, there is an objective way to determine the optimal exposure for individual frames in the stack.
+
+### 3.4 Sensor temperature
+
+The sensor temperature is chosen so that the thermal signal is negligible compared to that from the sky background. from the [ASI 2600 datasheet](https://astronomy-imaging-camera.com/manuals/ASI2600_Manual_EN.pdf), we choose to operate at -5°C, which corresponds to 0.001 electron / s, *i.e.* ~20 times lower than the [sky brightness](sky.ipynb) in narrowband images.
