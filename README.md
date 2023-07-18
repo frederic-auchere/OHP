@@ -28,6 +28,37 @@ https://www.baader-planetarium.com/en/filters/(ultra-)-narrowband-/-highspeed/ba
 - Equatorial mount driver: [EQASCOM](https://eq-mod.sourceforge.net/eqaindex.html) 
 - Sequencer: [Astro Photography Tool (APT)](https://astrophotography.app/)
 
+### 1.3 Notes
+
+#### 1.3.1 Plate scale
+
+Given the pixel size of 3.76 &#0956;m, and the measured focal length of the telescope is 555 mm (larger than the listed value by 1%), the plate scale of the setup is 
+
+3600 * &#0960; atan( 0.00376 / 555 ) / 180 = 1.397" / pixel
+
+#### 1.3.2 Angular resolution
+
+The angular resolution is given by the diameter of the [Airy disk](https://en.wikipedia.org/wiki/Airy_disk)
+
+r = 1.22 &#0955; / D
+
+with D = 0.1 m the diameter of the objective lens. In the green, this corresponds to about 1.1". However, the typical seeing (from atmospheric turbulence) is about 2" to 3" rms, which thus drives the resolution. In addition, the tracking errors of the equatorial mount are of the order of 1" rms. Taking the quadratic sum of the three contributors, we get the effective width of the [Point Spread Function](https://en.wikipedia.org/wiki/Point_spread_function) (PSF).
+
+| Filter   | &#0955; [nm] | Optical r ["] | 2" seeing r ["] | 3" seeing r ["] |
+|----------|--------------|---------------|-----------------|-----------------|
+| B        | 460          | 0.94          | 2.43            | 3.30            |
+| OIII     | 496 / 501    | 1.02 / 1.03   | 2.46 / 2.46     | 3.32 / 3.33     |
+| G        | 530          | 1.09          | 2.49            | 3.35            |
+| R        | 640          | 1.32          | 2.60            | 3.43            |
+| H&#0945; | 656          | 1.35          | 2.61            | 3.44            |
+|SII       | 672          | 1.38          | 2.63            | 3.45            |
+
+While the optical resolution values differ by 30%, the effective resolution varies by 8% with 2" seeing and by 4% with 3". At 2" seeing, the system does not satisfy the
+[Nyquist–Shannon sampling theorem](https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem), which requires a sampling of 1.2" / pixel in the blue. 
+
+#### 1.3.3 Tracking
+
+The equatorial mount is tracking very accurately, with compensation of the periodic error down to ~1" rms. However, there is no active guiding. This means that long exposures will be affected by drift caused by polar alignment errors. The measured drift rate is typically 0.5" / minute. If we allow a total drift during an exposure to be 1/10th the PSF (so that the effect is negligible), the exposure time is limited to 30 s with 2" seeing.
 
 ## 2. The acquisition chain
 
@@ -73,13 +104,13 @@ E(**x**) = [ S(*x**) - D(**x**) ] / [ g(**x**) * t ]
 
 ## 3. Choosing the optimal acquisition parameters
 
-### 3.1 Gain
-
-Looking at the characteristics of the [ZWO ASI 2600 MM Cool](https://astronomy-imaging-camera.com/manuals/ASI2600_Manual_EN.pdf), the gain setting of 100 is a good compromise between dynamic range and read noise. Note that this 'gain' value of 100 is *not* the gain as defined above. It is a setting value in arbitrary units, to which corresponds a true gain (as expressed in DN / electron), as measured in the [ptc](ptc.ipynb) notebook.
-
-### 3.2 Bias
+### 3.1 Bias
 
 The bias value of the ADC needs to be chosen so that the value are not This will be looked at in the [bias notebook](bias.ipynb). 
+
+### 3.2 Gain
+
+Looking at the characteristics of the [ZWO ASI 2600 MM Cool](https://astronomy-imaging-camera.com/manuals/ASI2600_Manual_EN.pdf), the gain setting of 100 is a good compromise between dynamic range and read noise. Note that this 'gain' value of 100 is *not* the gain as defined above. It is a setting value in arbitrary units, to which corresponds a true gain (as expressed in DN / electron), as measured in the [ptc](ptc.ipynb) notebook.
 
 ### 3.3 Exposure time
 
@@ -112,4 +143,10 @@ with &#0949; representing the acceptable increase in noise, *e.g.* 0.1 for 10%. 
 
 t = &#0963;_r&#0178; / { K * [ (1 + &#0949;)&#0178; - 1] }
 
-Exposure times larger than that will only provide marginal reduction of the noise in the stack. For a given &#0949;, the optimum exposure time thus proportional to the ratio &#0963;_r&#0178; / K. The higher the read noise, the longer the required exposure time. The brighter the sky background, the shorter the required exposure time. For example, for a read noise of 1.4 electrons, a [sky brightness](sky.ipynb) of 0.35 electrons, one gets t = 27 s for &#0949; = 0.1 (10% acceptable increase).
+Exposure times larger than that will only provide marginal reduction of the noise in the stack. For a given &#0949;, the optimum exposure time thus proportional to the ratio &#0963;_r&#0178; / K. The higher the read noise, the longer the required exposure time. The brighter the sky background, the shorter the required exposure time.
+
+For example, for a read noise of 1.4 electrons, a [sky brightness](sky.ipynb) of 0.35 electrons, one gets
+
+t = 27 s
+
+for &#0949; = 0.1 (10% acceptable noise increase). This is to be compared with the maximum exposure time allowed by the tracking system (see [1.3.3](#Tracking)).
