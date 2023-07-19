@@ -2,7 +2,7 @@
 
 ## America / Pelican challenge
 
-Our objective will be to build collectively images of the [NGC 7000](https://en.wikipedia.org/wiki/North_America_Nebula) / [IC 5070 / IC 5067](https://en.wikipedia.org/wiki/Pelican_Nebule) complex, *a.k.a.* the North America and Pelican nebulae. We will acquire and reduce the date necessary to produce an image in 'natural' RGB colors (similar to the one below, but at higher resolution) and in 'false color' narrow band (SII, H&#0945;, OII, similar to [this](https://en.wikipedia.org/wiki/North_America_Nebula#/media/File:NANeb3PS23_SCNR.jpg)).
+Our objective will be to build collectively images of the [NGC 7000](https://en.wikipedia.org/wiki/North_America_Nebula) / [IC 5070 / IC 5067](https://en.wikipedia.org/wiki/Pelican_Nebule) complex, *a.k.a.* the North America and Pelican nebulae. We will acquire and reduce the data necessary to produce an image in 'natural' RGB colors (similar to the one below, but at higher resolution) and in 'false color' narrow band (SII, H&#0945;, OII, similar to [this](https://en.wikipedia.org/wiki/North_America_Nebula#/media/File:NANeb3PS23_SCNR.jpg)).
 
 **The challenge will be to collectively accumulate as many hours of exposure as possible to assemble the best final images**.  
 
