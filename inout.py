@@ -30,7 +30,7 @@ def get_headers(files):
         f = files[0]
     _, extension = os.path.splitext(f)
 
-    if extension == '.CR2':
+    if extension in ['.CR2', '.ARW', '.NEF']:
         exif_data = get_exif_data(files)
         headers = exif2fitshead(exif_data)
     elif extension in fits_extensions:

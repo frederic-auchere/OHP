@@ -14,7 +14,7 @@ class Image:
         if extension in ['.FTS', '.FITS', '.FIT']:
             self.data = fits.getdata(file)
         # DSLR files
-        elif extension in ['.CR2', '.NEF']:
+        elif extension in ['.CR2', '.NEF', '.ARW']:
             self.data = inout.read_raw_dslr(str(file))
         else:
             raise ValueError(f'Unsupported extension: {extension}')
