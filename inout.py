@@ -25,6 +25,7 @@ def get_headers(files):
 
     if type(files) == str:
         f = files
+        files = [files]
     else:
         f = files[0]
     _, extension = os.path.splitext(f)
