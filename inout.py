@@ -1,5 +1,6 @@
 import io
 from sys import platform
+import rawpy
 from exiftool import ExifToolHelper
 from astropy.io import fits
 import os
@@ -7,8 +8,6 @@ import time
 import subprocess
 from PIL import Image
 import numpy as np
-from libraw.bindings import LibRaw
-import ctypes
 
 
 if platform.startswith('win'):
@@ -18,10 +17,13 @@ elif platform.startswith('linux'):
 else:
     STRINGS_ENCODING = 'utf-8'
 
+FITS_EXTENSIONS = ['.FITS', '.FTS', '.FIT']
+RAW_EXTENSIONS = ['.CR2', '.CR3', '.ARW', '.NEF', '.RW2', '.DNG']
+
 
 def get_headers(files):
 
-    fits_extensions = ['.fits', '.fts', '.fit']
+    fits_extensions = FITS_EXTENSIONS
 
     if type(files) == str:
         f = files
@@ -29,8 +31,9 @@ def get_headers(files):
     else:
         f = files[0]
     _, extension = os.path.splitext(f)
+    extension = extension.upper()
 
-    if extension in ['.CR2', '.ARW', '.NEF']:
+    if extension in RAW_EXTENSIONS:
         exif_data = get_exif_data(files)
         headers = exif2fitshead(exif_data)
     elif extension in fits_extensions:
@@ -120,41 +123,26 @@ def read_raw_dslr(file,
 
         if use_libraw:
 
-            lib = LibRaw()
-            data = lib.libraw_init(0)
-            lib.libraw_open_file(data, file.encode(STRINGS_ENCODING))
-            lib.libraw_unpack(data)
+            with rawpy.imread(file) as data:
 
-            data_pointer = ctypes.cast(
-                data.contents.rawdata.raw_image,
-                ctypes.POINTER(ctypes.c_ushort
-                               * data.contents.sizes.raw_width
-                               * data.contents.sizes.raw_height)
-            )
+                if roi is None:
+                    y0 = data.sizes.top_margin
+                    y1 = y0 + data.sizes.raw_height
+                    x0 = data.sizes.left_margin
+                    x1 = x0 + data.sizes.raw_width
+                else:
+                    y0 = data.sizes.top_margin + roi[0]
+                    y1 = y0 + (roi[1] - roi[0] + 1)
+                    x0 = data.sizes.left_margin + roi[2]
+                    x1 = x0 + (roi[3] - roi[2] + 1)
 
-            full_frame = np.ascontiguousarray(data_pointer.contents)
-
-            if roi is None:
-                y0 = data.contents.sizes.top_margin
-                y1 = y0 + data.contents.sizes.raw_height
-                x0 = data.contents.sizes.left_margin
-                x1 = x0 + data.contents.sizes.raw_width
-            else:
-                y0 = data.contents.sizes.top_margin + roi[0]
-                y1 = y0 + (roi[1] - roi[0] + 1)
-                x0 = data.contents.sizes.left_margin + roi[2]
-                x1 = x0 + (roi[3] - roi[2] + 1)
-
-            # # This makes a copy of the array (astype), even if from int to int
-            # # otherwise the reference to full_frame is lost after lib.close()
-            frame = full_frame[y0:y1, x0:x1].astype(dtype)
-
-            lib.libraw_close(data)
+                # # This makes a copy of the array (astype), even if from int to int
+                # # otherwise the reference to full_frame is lost after lib.close()
+                frame = data.raw_image[y0:y1, x0:x1].astype(dtype)
 
             return frame
 
         else:
-
             p = subprocess.Popen(["dcraw",
                                   "-c",  # Write image data to standard output
                                   "-T",  # Writes TIFF instead of PPM

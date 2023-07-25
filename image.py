@@ -5,7 +5,7 @@ from astropy.io import fits
 
 class Image:
 
-    def __init__(self, file):
+    def __init__(self, file, use_libraw=True):
 
         self.header = inout.get_headers(file)
 
@@ -14,7 +14,7 @@ class Image:
         if extension in ['.FTS', '.FITS', '.FIT']:
             self.data = fits.getdata(file)
         # DSLR files
-        elif extension in ['.CR2', '.NEF', '.ARW']:
-            self.data = inout.read_raw_dslr(str(file))
+        elif extension in inout.RAW_EXTENSIONS:
+            self.data = inout.read_raw_dslr(str(file), use_libraw=use_libraw)
         else:
             raise ValueError(f'Unsupported extension: {extension}')
