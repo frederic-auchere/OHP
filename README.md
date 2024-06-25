@@ -101,7 +101,7 @@ It is important to note that for a given pixel, I(\mathbf{x}), N(\mathbf{x}, T) 
 
 The above equation can be rewritten:
 
-$$S(\mathbf{x}) = g(\mathbf{x}) \left[ t\ Q(\mathbf{x}) I(\mathbf{x}) + R(\mathbf{x}) \right] + g(\mathbf{x}) t N(\mathbf{x}, T) + B(\mathbf{x})$$
+$$S(\mathbf{x}) = g(\mathbf{x}) \left[ t\ Q(\mathbf{x}, \lambda) I(\mathbf{x}) + R(\mathbf{x}) \right] + g(\mathbf{x}) t N(\mathbf{x}, T) + B(\mathbf{x})$$
 
 The relevant quantity to compute the [shot noise](https://en.wikipedia.org/wiki/Shot_noise) in the image is $E(\mathbf{x}) = EQE(\mathbf{x}) * I(\mathbf{x})$, *i.e.* the number of electrons, which is what is effectively counted by the sensor. We thus have 
 
@@ -109,7 +109,7 @@ $$S(\mathbf{x}) = g(\mathbf{x}) [ t E(\mathbf{x}) + R(\mathbf{x}) ] + g(\mathbf{
 
 The objective of the calibration of the detector is to invert the above equation to be able to determine E(\mathbf{x}) knowing the measured signal S(\mathbf{x}). As mentioned above, N and R are random variables. As such, it is impossible to know the exact value taken by each one during a given data acquisition. All we can determine - and correct for - is the mean (denoted <>) of these random variables. In addition, we note that the read noise R(\mathbf{x}) has zero mean. We can thus now write the calibration equation as 
 
-$$E(\mathbf{x}) = \left{ S(\mathbf{x}) - \left[ g(\mathbf{x}) t < N >(\mathbf{x}, T) + B(\mathbf{x}) \right] \right} / \left[ g(\mathbf{x}) t \right]$$
+$$E(\mathbf{x}) = \left( S(\mathbf{x}) - \left[ g(\mathbf{x}) t < N >(\mathbf{x}, T) + B(\mathbf{x}) \right] \right) / \left[ g(\mathbf{x}) t \right]$$
 
 or, with $D(\mathbf{x}) = g(\mathbf{x}) t < N >(\mathbf{x}, T) + B(\mathbf{x})$
 
