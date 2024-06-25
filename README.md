@@ -125,11 +125,11 @@ E(**x**) = [ S(**x**) - D(**x**) ] / [ g(**x**) * t ]
 
 ### 3.1 Bias
 
-The bias value of the ADC needs to be chosen so that the value are not This will be looked at in the [bias notebook](bias.ipynb). 
+The bias of the ADC needs to be chosen so that the values are not clipped due to random fluctuations of the signal around zero. This will be looked at in the [bias notebook](bias.ipynb). 
 
 ### 3.2 Gain
 
-Looking at the characteristics of the [ZWO ASI 2600 MM Cool](https://astronomy-imaging-camera.com/manuals/ASI2600_Manual_EN.pdf), the gain setting of 100 is a good compromise between dynamic range and read noise. Note that this 'gain' value of 100 is *not* the gain as defined above. It is a setting value in arbitrary units, to which corresponds a true gain (as expressed in DN / electron), as measured in the [ptc](ptc.ipynb) notebook.
+Looking at the characteristics of the [ZWO ASI 2600 MM Cool](https://astronomy-imaging-camera.com/manuals/ASI2600_Manual_EN.pdf), the 'gain' setting of 100 is a good compromise between dynamic range and read noise. Note that this 'gain' value of 100 is *not* the gain as defined above. It is a setting value in arbitrary units, to which corresponds a true gain (as expressed in DN / electron), as measured in the [ptc](ptc.ipynb) notebook.
 
 ### 3.3 Exposure time
 
