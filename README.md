@@ -88,7 +88,7 @@ $$S(\mathbf{x}) = g(\mathbf{x}) \left[ t\ \left( Q(\mathbf{x}, \lambda)  I(\math
 
 where:
 - $\mathbf{x}$ is the vector position on the detector.
-- $lambda$ is the wavelength.
+- $\lambda$ is the wavelength.
 - $I(\mathbf{x})$ is the intensity incident on the detector, in photons per second.
 - $Q(\mathbf{x}, \lambda)$ is the [external quantum efficiency](https://en.wikipedia.org/wiki/Quantum_efficiency) (EQE), *i.e.* the number of photo-electrons created per incident photon.
 - $g(\mathbf{x})$ is the gain of the detector, *i.e.* the number of DN per photo-electron.
