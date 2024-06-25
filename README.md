@@ -84,15 +84,15 @@ Active guiding is provided by a 50 mm diameter, F/4.8 guide telescope equipped w
 
 The signal S(**x**) measured in DN (Digital Number, *a.k.a.* ADU, Analog to Digital Unit) by the detector is equal to
 
-$$S(\mathbf{x}) = g(**x**) [ t\ ( Q(**x**, &#0955;)  I(**x**) + N(**x**, T) ) + R(**x**) ] + B(**x**)$$
+$$S(\mathbf{x}) = g(\mathbf{x}) [ t\ ( Q(\mathbf{x}, \lambda)  I(\mathbf{x}) + N(\mathbf{x}, T) ) + R(\mathbf{x}) ] + B(\mathbf{x})$$
 
 where:
-- **x** is the vector position on the detector.
-- &#0955; is the wavelength.
-- I(**x**) is the intensity incident on the detector, in photons per second.
-- Q(**x**, &#0955;) is the [external quantum efficiency](https://en.wikipedia.org/wiki/Quantum_efficiency) (EQE), *i.e.* the number of photo-electrons created per incident photon.
-- g(**x**) is the gain of the detector, *i.e.* the number of DN per photo-electron.
-- N(**x**, T) is the thermal signal, function of the temperature T, in electrons per second.
+- $\mathbf{x}$ is the vector position on the detector.
+- $lambda$ is the wavelength.
+- $I(\mathbf{x})$ is the intensity incident on the detector, in photons per second.
+- $Q(\mathbf{x}, \lambda)$ is the [external quantum efficiency](https://en.wikipedia.org/wiki/Quantum_efficiency) (EQE), *i.e.* the number of photo-electrons created per incident photon.
+- $g(\mathbf{x})$ is the gain of the detector, *i.e.* the number of DN per photo-electron.
+- $N(\mathbf{x}, T)$ is the thermal signal, function of the temperature T, in electrons per second.
 - t is the exposure time, in seconds.
 - R(**x**) is the read noise, in electrons.
 - B(**x**) is the bias of the Analog to Digital Converter(s) (ADC), *i.e.* the output value that corresponds to zero incident intensity, in DN per electron. The bias is set to a positive value to avoid clipping of faint signals to zero.
