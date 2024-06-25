@@ -101,7 +101,7 @@ It is important to note that for a given pixel, I(\mathbf{x}), N(\mathbf{x}, T) 
 
 The above equation can be rewritten:
 
-$$S(\mathbf{x}) = g(\mathbf{x}) \left[ t Q(\mathbf{x}) I(\mathbf{x}) + R(\mathbf{x}) \right] + g(\mathbf{x}) t N(\mathbf{x}, T) + B(\mathbf{x})$$
+$$S(\mathbf{x}) = g(\mathbf{x}) \left[ t\ Q(\mathbf{x}) I(\mathbf{x}) + R(\mathbf{x}) \right] + g(\mathbf{x}) t N(\mathbf{x}, T) + B(\mathbf{x})$$
 
 The relevant quantity to compute the [shot noise](https://en.wikipedia.org/wiki/Shot_noise) in the image is $E(\mathbf{x}) = EQE(\mathbf{x}) * I(\mathbf{x})$, *i.e.* the number of electrons, which is what is effectively counted by the sensor. We thus have 
 
