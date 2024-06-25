@@ -84,7 +84,7 @@ Active guiding is provided by a 50 mm diameter, F/4.8 guide telescope equipped w
 
 The signal S(**x**) measured in DN (Digital Number, *a.k.a.* ADU, Analog to Digital Unit) by the detector is equal to
 
-$$S(**x**) = g(**x**) * [ t * ( Q(**x**, &#0955;) * I(**x**) + N(**x**, T) ) + R(**x**) ] + B(**x**)$$
+$$S(\mathrm{x}) = g(**x**) [ t\, ( Q(**x**, &#0955;)  I(**x**) + N(**x**, T) ) + R(**x**) ] + B(**x**)$$
 
 where:
 - **x** is the vector position on the detector.
