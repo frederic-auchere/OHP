@@ -82,7 +82,7 @@ Active guiding is provided by a 50 mm diameter, F/4.8 guide telescope equipped w
 
 ## 2. The acquisition chain
 
-The signal S(**x**) measured in DN (Digital Number, *a.k.a.* ADU, Analog to Digital Unit) by the detector is equal to
+The signal S(\mathbf{x}) measured in DN (Digital Number, *a.k.a.* ADU, Analog to Digital Unit) by the detector is equal to
 
 $$S(\mathbf{x}) = g(\mathbf{x}) \left[ t\ \left( Q(\mathbf{x}, \lambda)  I(\mathbf{x}) + N(\mathbf{x}, T) \right) + R(\mathbf{x}) \right] + B(\mathbf{x})$$
 
@@ -97,30 +97,30 @@ where:
 - $R(\mathbf{x})$ is the read noise, in electrons.
 - $B(\mathbf{x})$ is the bias of the Analog to Digital Converter(s) (ADC), *i.e.* the output value that corresponds to zero incident intensity, in DN per electron. The bias is set to a positive value to avoid clipping of faint signals to zero.
 
-It is important to note that for a given pixel, I(**x**), N(**x**, T) and R(**x**) are functions of time because of the statistical fluctuations of the photon and thermal signals, and because of the noise in the readout electronics. I, N and R must thus be understood as random variables. It is worth noting that thermal electrons cannot be distinguished from photo-electrons. They obey to the same [Poisson statistics](https://en.wikipedia.org/wiki/Poisson_distribution).
+It is important to note that for a given pixel, I(\mathbf{x}), N(\mathbf{x}, T) and R(\mathbf{x}) are functions of time because of the statistical fluctuations of the photon and thermal signals, and because of the noise in the readout electronics. I, N and R must thus be understood as random variables. It is worth noting that thermal electrons cannot be distinguished from photo-electrons. They obey to the same [Poisson statistics](https://en.wikipedia.org/wiki/Poisson_distribution).
 
 The above equation can be rewritten:
 
-$S(**x**) = g(**x**) * [ t * Q(**x**) * I(**x**) + R(**x**) ] + g(**x**) * t * N(**x**, T) + B(**x**)$$
+$S(\mathbf{x}) = g(\mathbf{x}) \left[ t Q(\mathbf{x}) I(\mathbf{x}) + R(\mathbf{x}) \right] + g(\mathbf{x}) t N(\mathbf{x}, T) + B(\mathbf{x})$$
 
-The relevant quantity to compute the [shot noise](https://en.wikipedia.org/wiki/Shot_noise) in the image is E(**x**) = EQE(x) * I(x), *i.e.* the number of electrons, which is what is effectively counted by the sensor. We thus have 
+The relevant quantity to compute the [shot noise](https://en.wikipedia.org/wiki/Shot_noise) in the image is $E(\mathbf{x}) = EQE(\mathbf{x}) * I(\mathbf{x})$, *i.e.* the number of electrons, which is what is effectively counted by the sensor. We thus have 
 
-S(**x**) = g(**x**) * [ t * E(**x**) + R(**x**) ] + g(**x**) * t * N(**x**, T) + B(**x**)
+$$S(\mathbf{x}) = g(\mathbf{x}) [ t E(\mathbf{x}) + R(\mathbf{x}) ] + g(\mathbf{x}) t N(\mathbf{x}, T) + B(\mathbf{x})$$
 
-The objective of the calibration of the detector is to invert the above equation to be able to determine E(**x**) knowing the measured signal S(**x**). As mentioned above, N and R are random variables. As such, it is impossible to know the exact value taken by each one during a given data acquisition. All we can determine - and correct for - is the mean (denoted <>) of these random variables. In addition, we note that the read noise R(**x**) has zero mean. We can thus now write the calibration equation as 
+The objective of the calibration of the detector is to invert the above equation to be able to determine E(\mathbf{x}) knowing the measured signal S(\mathbf{x}). As mentioned above, N and R are random variables. As such, it is impossible to know the exact value taken by each one during a given data acquisition. All we can determine - and correct for - is the mean (denoted <>) of these random variables. In addition, we note that the read noise R(\mathbf{x}) has zero mean. We can thus now write the calibration equation as 
 
-E(**x**) = { S(**x**) - [ g(**x**) * t * < N >(**x**, T) + B(**x**) ] } / [ g(**x**) * t ]
+$$E(\mathbf{x}) = \left{ S(\mathbf{x}) - \left[ g(\mathbf{x}) t < N >(\mathbf{x}, T) + B(\mathbf{x}) \right] \right} / \left[ g(\mathbf{x}) t \right]$$
 
-or, with D(**x**) = g(**x**) * t * < N >(**x**, T) + B(**x**)
+or, with $D(\mathbf{x}) = g(\mathbf{x}) t < N >(\mathbf{x}, T) + B(\mathbf{x})$
 
-E(**x**) = [ S(**x**) - D(**x**) ] / [ g(**x**) * t ]
+$$E(\mathbf{x}) = \frac{S(\mathbf{x}) - D(\mathbf{x}) }{[ g(\mathbf{x}) t }$$
 
 
-- D(**x**), sum of the thermal signal and [bias](bias.ipynb), can be measured by taking '[dark frames](darks.ipynb)', *i.e.* images taken without illuminating the detector.
+- $D(\mathbf{x})$, sum of the thermal signal and [bias](bias.ipynb), can be measured by taking '[dark frames](darks.ipynb)', *i.e.* images taken without illuminating the detector.
 
-- The gain g(**x**) and read noise R(**x**) can be measured simultaneously using a method called the [Photon Transfer Curve (PTC)](ptc.ipynb) analysis. Although the read noise does not appear in the calibration equation, it is an important quantity to determine to choose the optimal acquisitaion parameters and to reduce the data.  
+- The gain $g(\mathbf{x})$ and read noise $R(\mathbf{x})$ can be measured simultaneously using a method called the [Photon Transfer Curve (PTC)](ptc.ipynb) analysis. Although the read noise does not appear in the calibration equation, it is an important quantity to determine to choose the optimal acquisitaion parameters and to reduce the data.  
 
-- The PTC analysis will typically provide the mean value of the gain over the detector. The pixel-to-pixel variations of the gain g(**x**) are called the '[flat-field](flats.ipynb)' and can be measured using a uniform light source. By extension, the term flat-field is used to describe the combination of all the multiplicative terms that affect the spatial variations of the response of the instrument (*e.g.* the [vignetting](https://en.wikipedia.org/wiki/Vignetting)).  
+- The PTC analysis will typically provide the mean value of the gain over the detector. The pixel-to-pixel variations of the gain $g(\mathbf{x})$ are called the '[flat-field](flats.ipynb)' and can be measured using a uniform light source. By extension, the term flat-field is used to describe the combination of all the multiplicative terms that affect the spatial variations of the response of the instrument (*e.g.* the [vignetting](https://en.wikipedia.org/wiki/Vignetting)).  
 
 ## 3. Choosing the optimal acquisition parameters
 
