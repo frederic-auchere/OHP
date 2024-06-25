@@ -32,21 +32,22 @@ Then, using ([Siril](https://www.siril.org/), [old website](https://free-astro.o
 - Refracting telescope: [Skywatcher ESPRIT 100 ED
 ](https://inter-static.skywatcher.com/upfiles/en_download_caty01390352363.pdf)
 - Equatorial mount: [Skywatcher AZ-EQ6](https://inter-static.skywatcher.com/upfiles/en_download_caty01353096919.pdf)
-- Camera: [ZWO ASI 2600 MM Cool](https://astronomy-imaging-camera.com/manuals/ASI2600_Manual_EN.pdf)
+- Camera: [ZWO ASI 2600 MM Cool](https://i.zwoastro.com/zwo-website//manuals/ZWO_ASI_Cooled_Cameras_Quick_Guide.pdf)
 - Filter wheel: [ZWO EFW](https://astronomy-imaging-camera.com/manuals/EFW%20QuickGuide.pdf)
 - Filters: broad band [Luminance, Red, Green, Blue](https://www.baader-planetarium.com/en/filters/l-rgb-cmos-filters/baader-lrgb-filter-set-%E2%80%93-cmos-optimized.html) and narrow band (6 nm) [SII, H&#0945;, OIII](
 https://www.baader-planetarium.com/en/filters/(ultra-)-narrowband-/-highspeed/baader-6.5nm-narrowband-filter-set-%E2%80%93-cmos-optimized-(h-alpha--o-iii--s-ii).html)
+- Guide telescope: [EVO guide 50 mm](https://www.pierro-astro.com/materiel-astronomique/autoguidage/lunette-guide-50mm-evoguide-50ed-avec-support-queue-daronde-vixen-m%C3%A2le-sky-watcher_detail) with [field flattener](https://www.pierro-astro.com/materiel-astronomique/autoguidage/correcteur-de-champ-pour-lunette-sky-watcher-evoguide50-sky-watcher-7135_detail) and [ASI 178 MM](https://i.zwoastro.com/zwo-website/manuals/ZWO_Uncooled_Camera_Quick_Guide.pdf) camera 
 
 ### 1.2 Software
 
 - Equatorial mount driver: [EQASCOM](https://eq-mod.sourceforge.net/eqaindex.html) 
-- Sequencer: [Astro Photography Tool (APT)](https://astrophotography.app/)
+- Sequencer: [Nightime Imaging 'n' Astronomy (NINA)](https://nighttime-imaging.eu/)
 
 ### 1.3 Notes
 
 #### 1.3.1 Plate scale
 
-Given the pixel size of 3.76 &#0956;m, and the measured focal length of the telescope is 555 mm (larger than the listed value by 1%), the plate scale of the setup is 
+Given the pixel size of 3.76 &#0956;m, and the [measured focal length](https://www.astrobin.com/forum/c/astrophotography/equipment/what-is-the-focal-length-of-my-esprit-100ed/) of the telescope is 555 mm (larger than the listed value by 1%), the plate scale of the setup is 
 
 3600 * &#0960; atan( 0.00376 / 555 ) / 180 = 1.397" / pixel
 
@@ -56,23 +57,27 @@ The angular resolution is given by the diameter of the [Airy disk](https://en.wi
 
 r = 1.22 &#0955; / D
 
-with D = 0.1 m the diameter of the objective lens. In the green, this corresponds to about 1.1". However, the typical seeing (from atmospheric turbulence) is about 2" to 3" rms, which thus drives the resolution. In addition, the tracking errors of the equatorial mount are of the order of 1" rms. Taking the quadratic sum of the three contributors, we get the effective width of the [Point Spread Function](https://en.wikipedia.org/wiki/Point_spread_function) (PSF).
+with D = 0.1 m the diameter of the objective lens. In the green (540 nm), this corresponds to about 1.4". However, the typical seeing (from atmospheric turbulence) is about 2" to 3" rms, which thus drives the resolution. In addition, the tracking errors of the equatorial mount are of the order of 1" rms. Taking the quadratic sum of the three contributors, we get the effective width of the [Point Spread Function](https://en.wikipedia.org/wiki/Point_spread_function) (PSF).
 
 | Filter   | &#0955; [nm] | Optical r ["] | 2" seeing r ["] | 3" seeing r ["] |
 |----------|--------------|---------------|-----------------|-----------------|
-| B        | 460          | 0.94          | 2.43            | 3.30            |
-| OIII     | 496 / 501    | 1.02 / 1.03   | 2.46 / 2.46     | 3.32 / 3.33     |
-| G        | 530          | 1.09          | 2.49            | 3.35            |
-| R        | 640          | 1.32          | 2.60            | 3.43            |
-| H&#0945; | 656          | 1.35          | 2.61            | 3.44            |
-| SII      | 672          | 1.38          | 2.63            | 3.45            |
+| B        | 460          | 1.16          | 2.52            | 3.37            |
+| OIII     | 496 / 501    | 1.25 / 1.26   | 2.56 / 2.57     | 3.40 / 3.40     |
+| G        | 530          | 1.33          | 2.60            | 3.43            |
+| R        | 640          | 1.61          | 2.75            | 3.55            |
+| H&#0945; | 656          | 1.65          | 2.78            | 3.57            |
+| SII      | 672          | 1.69          | 2.80            | 3.59            |
 
-While the optical resolution values differ by 30%, the effective resolution varies by 8% with 2" seeing and by 4% with 3". At 2" seeing, the system does not satisfy the
+While the optical resolution values differ by 45%, the effective resolution varies by 11% with 2" seeing and by 6% with 3". At 2" seeing, the system does not satisfy the
 [Nyquist–Shannon sampling theorem](https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem), which requires a sampling of 1.2" / pixel in the blue. 
 
 #### 1.3.3 Tracking
 
-The equatorial mount is tracking very accurately, with compensation of the periodic error down to ~1" rms. However, there is no active guiding. This means that long exposures will be affected by drift caused by polar alignment errors. The measured drift rate is typically 0.5" / minute. If we allow a total drift during an exposure to be 1/10th the PSF (so that the effect is negligible), the exposure time is limited to 30s with 2" seeing. Exposures of 90s induce a drift of ~1/3 PSF with 2" seeing, which can be marginally acceptable.  
+The equatorial mount is tracking very accurately, with compensation of the periodic error down to ~2" rms. Without active guiding, long exposures would be affected by drift caused by polar alignment errors, refraction & mechanical deformations. The measured drift rate is typically 0.5" / minute. If we allow a total drift during an exposure to be 1/10th the PSF (so that the effect is negligible), the exposure time is limited to 30s with 2" seeing. Exposures of 90s induce a drift of ~1/3 PSF with 2" seeing, which can be marginally acceptable.
+
+#### 1.3.4 Guiding
+
+Active guiding is provided by a 50 mm diameter, F/4.8 guide telescope equipped with a field flattener and an AZI 178 mono camera. The guiding error is systematically < 1" rms, down to 0.6" rms in good conditions.
 
 ## 2. The acquisition chain
 
