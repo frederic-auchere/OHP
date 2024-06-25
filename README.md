@@ -42,6 +42,7 @@ https://www.baader-planetarium.com/en/filters/(ultra-)-narrowband-/-highspeed/ba
 
 - Equatorial mount driver: [EQASCOM](https://eq-mod.sourceforge.net/eqaindex.html) 
 - Sequencer: [Nightime Imaging 'n' Astronomy (NINA)](https://nighttime-imaging.eu/)
+- Guider: [Open PHD](https://openphdguiding.org/)
 
 ### 1.3 Notes on the acquisition setup
 
