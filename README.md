@@ -84,7 +84,7 @@ Active guiding is provided by a 50 mm diameter, F/4.8 guide telescope equipped w
 
 The signal S(**x**) measured in DN (Digital Number, *a.k.a.* ADU, Analog to Digital Unit) by the detector is equal to
 
-$$S(\mathbf{x}) = g(\mathbf{x}) [ t\ ( Q(\mathbf{x}, \lambda)  I(\mathbf{x}) + N(\mathbf{x}, T) ) + R(\mathbf{x}) ] + B(\mathbf{x})$$
+$$S(\mathbf{x}) = g(\mathbf{x}) \left[ t\ \left( Q(\mathbf{x}, \lambda)  I(\mathbf{x}) + N(\mathbf{x}, T) \right) + R(\mathbf{x}) \right] + B(\mathbf{x})$$
 
 where:
 - $\mathbf{x}$ is the vector position on the detector.
@@ -93,9 +93,9 @@ where:
 - $Q(\mathbf{x}, \lambda)$ is the [external quantum efficiency](https://en.wikipedia.org/wiki/Quantum_efficiency) (EQE), *i.e.* the number of photo-electrons created per incident photon.
 - $g(\mathbf{x})$ is the gain of the detector, *i.e.* the number of DN per photo-electron.
 - $N(\mathbf{x}, T)$ is the thermal signal, function of the temperature T, in electrons per second.
-- t is the exposure time, in seconds.
-- R(**x**) is the read noise, in electrons.
-- B(**x**) is the bias of the Analog to Digital Converter(s) (ADC), *i.e.* the output value that corresponds to zero incident intensity, in DN per electron. The bias is set to a positive value to avoid clipping of faint signals to zero.
+- $t$ is the exposure time, in seconds.
+- $R(\mathbf{x})$ is the read noise, in electrons.
+- $B(\mathbf{x})$ is the bias of the Analog to Digital Converter(s) (ADC), *i.e.* the output value that corresponds to zero incident intensity, in DN per electron. The bias is set to a positive value to avoid clipping of faint signals to zero.
 
 It is important to note that for a given pixel, I(**x**), N(**x**, T) and R(**x**) are functions of time because of the statistical fluctuations of the photon and thermal signals, and because of the noise in the readout electronics. I, N and R must thus be understood as random variables. It is worth noting that thermal electrons cannot be distinguished from photo-electrons. They obey to the same [Poisson statistics](https://en.wikipedia.org/wiki/Poisson_distribution).
 
