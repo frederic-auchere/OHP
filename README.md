@@ -30,7 +30,7 @@ Then, using ([Siril](https://www.siril.org/), [old website](https://free-astro.o
 ### 1.1 Hardware
 
 - Refracting telescope: [Skywatcher ESPRIT 100 ED
-](https://inter-static.skywatcher.com/upfiles/en_download_caty01390352363.pdf)
+](https://inter-static.skywatcher.com/upfiles/en_download_caty01390352363.pdf), 100 mm diameter, F/5.5
 - Equatorial mount: [Skywatcher AZ-EQ6](https://inter-static.skywatcher.com/upfiles/en_download_caty01353096919.pdf)
 - Camera: [ZWO ASI 2600 MM Cool](https://i.zwoastro.com/zwo-website//manuals/ZWO_ASI_Cooled_Cameras_Quick_Guide.pdf)
 - Filter wheel: [ZWO EFW](https://astronomy-imaging-camera.com/manuals/EFW%20QuickGuide.pdf)
@@ -84,7 +84,9 @@ Active guiding is provided by a 50 mm diameter, F/4.8 guide telescope equipped w
 
 The signal S(**x**) measured in DN (Digital Number, *a.k.a.* ADU, Analog to Digital Unit) by the detector is equal to
 
-S(**x**) = g(**x**) * [ t * ( Q(**x**, &#0955;) * I(**x**) + N(**x**, T) ) + R(**x**) ] + B(**x**)
+sS(**x**) = g(**x**) * [ t * ( Q(**x**, &#0955;) * I(**x**) + N(**x**, T) ) + R(**x**) ] + B(**x**)
+
+$$a_1$$
 
 where:
 - **x** is the vector position on the detector.
@@ -101,7 +103,7 @@ It is important to note that for a given pixel, I(**x**), N(**x**, T) and R(**x*
 
 The above equation can be rewritten:
 
-S(**x**) = g(**x**) * [ t * Q(**x**) * I(**x**) + R(**x**) ] + g(**x**) * t * N(**x**, T) + B(**x**)
+$S(**x**) = g(**x**) * [ t * Q(**x**) * I(**x**) + R(**x**) ] + g(**x**) * t * N(**x**, T) + B(**x**)$$
 
 The relevant quantity to compute the [shot noise](https://en.wikipedia.org/wiki/Shot_noise) in the image is E(**x**) = EQE(x) * I(x), *i.e.* the number of electrons, which is what is effectively counted by the sensor. We thus have 
 
