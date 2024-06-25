@@ -97,7 +97,7 @@ where:
 - $R(\mathbf{x})$ is the read noise, in electrons.
 - $B(\mathbf{x})$ is the bias of the Analog to Digital Converter(s) (ADC), *i.e.* the output value that corresponds to zero incident intensity, in DN per electron. The bias is set to a positive value to avoid clipping of faint signals to zero.
 
-It is important to note that for a given pixel, I(\mathbf{x}), N(\mathbf{x}, T) and R(\mathbf{x}) are functions of time because of the statistical fluctuations of the photon and thermal signals, and because of the noise in the readout electronics. I, N and R must thus be understood as random variables. It is worth noting that thermal electrons cannot be distinguished from photo-electrons. They obey to the same [Poisson statistics](https://en.wikipedia.org/wiki/Poisson_distribution).
+It is important to note that for a given pixel, I(\mathbf{x}), N(\mathbf{x}, T) and R(\mathbf{x}) are functions of time because of the statistical fluctuations of the photon and thermal signals, and because of the noise in the readout electronics. $I$, $N$ and $R$ must thus be understood as random variables. It is worth noting that thermal electrons cannot be distinguished from photo-electrons. They obey to the same [Poisson statistics](https://en.wikipedia.org/wiki/Poisson_distribution).
 
 The above equation can be rewritten:
 
@@ -107,7 +107,7 @@ The relevant quantity to compute the [shot noise](https://en.wikipedia.org/wiki/
 
 $$S(\mathbf{x}) = g(\mathbf{x}) [ t E(\mathbf{x}) + R(\mathbf{x}) ] + g(\mathbf{x}) t N(\mathbf{x}, T) + B(\mathbf{x})$$
 
-The objective of the calibration of the detector is to invert the above equation to be able to determine $E(\mathbf{x})$ knowing the measured signal S(\mathbf{x}). As mentioned above, $N$ and $R$ are random variables. As such, it is impossible to know the exact value taken by each one during a given data acquisition. All we can determine - and correct for - is the mean (denoted $\overline{N}$, $\overline{R}$) of these random variables. In addition, we note that the read noise $R(\mathbf{x})$ has zero mean ($\overline{R}=0$). We can thus now write the calibration equation as 
+The objective of the calibration of the detector is to invert the above equation to be able to determine $E(\mathbf{x})$ knowing the measured signal S(\mathbf{x}). As mentioned above, $N$ and $R$ are random variables. As such, it is impossible to know the exact value taken by each one during a given data acquisition. All we can determine - and correct for - is the temporal mean (denoted $\overline{N}$, $\overline{R}$) of these random variables. In addition, we note that the read noise $R(\mathbf{x})$ has zero mean ($\overline{R}=0$). We can thus now write the calibration equation as 
 
 $$E(\mathbf{x}) = \frac{S(\mathbf{x}) - \left[ g(\mathbf{x}) t\overline{N(\mathbf{x}, T)} + B(\mathbf{x})\right]}{g(\mathbf{x}) t}$$
 
