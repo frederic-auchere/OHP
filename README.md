@@ -43,7 +43,7 @@ https://www.baader-planetarium.com/en/filters/(ultra-)-narrowband-/-highspeed/ba
 - Equatorial mount driver: [EQASCOM](https://eq-mod.sourceforge.net/eqaindex.html) 
 - Sequencer: [Nightime Imaging 'n' Astronomy (NINA)](https://nighttime-imaging.eu/)
 
-### 1.3 Notes
+### 1.3 Notes on the acquisition setup
 
 #### 1.3.1 Plate scale
 
@@ -57,7 +57,7 @@ The angular resolution is given by the diameter of the [Airy disk](https://en.wi
 
 r = 1.22 &#0955; / D
 
-with D = 0.1 m the diameter of the objective lens. In the green (540 nm), this corresponds to about 1.4". However, the typical seeing (from atmospheric turbulence) is about 2" to 3" rms, which thus drives the resolution. In addition, the tracking errors of the equatorial mount are of the order of 1" rms. Taking the quadratic sum of the three contributors, we get the effective width of the [Point Spread Function](https://en.wikipedia.org/wiki/Point_spread_function) (PSF).
+with D = 0.1 m the diameter of the objective lens. In the green (530 nm), this corresponds to about 1.3". However, the typical seeing (from atmospheric turbulence) is about 2" to 3" rms, which thus drives the resolution. In addition, the tracking errors of the equatorial mount are of the order of 1" rms. Taking the quadratic sum of the three contributors, we get the effective width of the [Point Spread Function](https://en.wikipedia.org/wiki/Point_spread_function) (PSF).
 
 | Filter   | &#0955; [nm] | Optical r ["] | 2" seeing r ["] | 3" seeing r ["] |
 |----------|--------------|---------------|-----------------|-----------------|
