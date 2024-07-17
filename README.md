@@ -82,7 +82,7 @@ Active guiding is provided by a 50 mm diameter, F/4.8 guide telescope equipped w
 
 ## 2. The acquisition chain
 
-The signal S(\mathbf{x})$ measured in DN (Digital Number, *a.k.a.* ADU, Analog to Digital Unit) by the detector is equal to
+The signal $S(\mathbf{x})$ measured in DN (Digital Number, *a.k.a.* ADU, Analog to Digital Unit) by the detector is equal to
 
 $$S(\mathbf{x}) = g(\mathbf{x}) \left[ t\ \left( Q(\mathbf{x}, \lambda)  I(\mathbf{x}) + N(\mathbf{x}, T) \right) + R(\mathbf{x}) \right] + B(\mathbf{x})$$
 
