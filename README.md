@@ -82,7 +82,7 @@ Active guiding is provided by a 50 mm diameter, F/4.8 guide telescope equipped w
 
 ## 2. The acquisition chain
 
-The signal S(\mathbf{x}) measured in DN (Digital Number, *a.k.a.* ADU, Analog to Digital Unit) by the detector is equal to
+The signal S(\mathbf{x})$ measured in DN (Digital Number, *a.k.a.* ADU, Analog to Digital Unit) by the detector is equal to
 
 $$S(\mathbf{x}) = g(\mathbf{x}) \left[ t\ \left( Q(\mathbf{x}, \lambda)  I(\mathbf{x}) + N(\mathbf{x}, T) \right) + R(\mathbf{x}) \right] + B(\mathbf{x})$$
 
@@ -91,29 +91,29 @@ where:
 - $\lambda$ is the wavelength.
 - $I(\mathbf{x})$ is the intensity incident on the detector, in photons per second.
 - $Q(\mathbf{x}, \lambda)$ is the [external quantum efficiency](https://en.wikipedia.org/wiki/Quantum_efficiency) (EQE), *i.e.* the number of photo-electrons created per incident photon.
-- $g(\mathbf{x})$ is the gain of the detector, *i.e.* the number of DN per photo-electron.
+- $g(\mathbf{x})$ is the gain of the detector, *i.e.* the number of DN per electron.
 - $N(\mathbf{x}, T)$ is the thermal signal, function of the temperature T, in electrons per second.
 - $t$ is the exposure time, in seconds.
 - $R(\mathbf{x})$ is the read noise, in electrons.
-- $B(\mathbf{x})$ is the bias of the Analog to Digital Converter(s) (ADC), *i.e.* the output value that corresponds to zero incident intensity, in DN per electron. The bias is set to a positive value to avoid clipping of faint signals to zero.
+- $B(\mathbf{x})$ is the bias of the Analog to Digital Converter(s) (ADC), *i.e.* the output value that corresponds to zero incident intensity, in DNs. The bias is set to a positive value to avoid clipping of faint signals to zero.
 
-It is important to note that for a given pixel, I(\mathbf{x}), N(\mathbf{x}, T) and R(\mathbf{x}) are functions of time because of the statistical fluctuations of the photon and thermal signals, and because of the noise in the readout electronics. $I$, $N$ and $R$ must thus be understood as random variables. It is worth noting that thermal electrons cannot be distinguished from photo-electrons. They obey to the same [Poisson statistics](https://en.wikipedia.org/wiki/Poisson_distribution).
+It is important to note that for a given pixel, $I(\mathbf{x})$, $N(\mathbf{x}, T)$ and $R(\mathbf{x})$ are also functions of time because of the statistical fluctuations of the photon and thermal signals, and because of the noise in the readout electronics. $I$, $N$ and $R$ must thus be understood as random variables. It is worth noting that thermal electrons cannot be distinguished from photo-electrons. They obey to the same [Poisson statistics](https://en.wikipedia.org/wiki/Poisson_distribution).
 
 The above equation can be rewritten:
 
 $$S(\mathbf{x}) = g(\mathbf{x}) \left[ t\ Q(\mathbf{x}, \lambda) I(\mathbf{x}) + R(\mathbf{x}) \right] + g(\mathbf{x}) t N(\mathbf{x}, T) + B(\mathbf{x})$$
 
-The relevant quantity to compute the [shot noise](https://en.wikipedia.org/wiki/Shot_noise) in the image is $E(\mathbf{x}) = EQE(\mathbf{x}) I(\mathbf{x})$, *i.e.* the number of electrons, which is what is effectively counted by the sensor. We thus have 
+The relevant quantity to compute the [shot noise](https://en.wikipedia.org/wiki/Shot_noise) in the image is $E(\mathbf{x}) = tQ(\mathbf{x}) I(\mathbf{x})$, *i.e.* the number of detected photons. We thus have 
 
-$$S(\mathbf{x}) = g(\mathbf{x}) [ t E(\mathbf{x}) + R(\mathbf{x}) ] + g(\mathbf{x}) t N(\mathbf{x}, T) + B(\mathbf{x})$$
+$$S(\mathbf{x}) = g(\mathbf{x}) [E(\mathbf{x}) + R(\mathbf{x}) ] + g(\mathbf{x}) t N(\mathbf{x}, T) + B(\mathbf{x})$$
 
 The objective of the calibration of the detector is to invert the above equation to be able to determine $E(\mathbf{x})$ knowing the measured signal S(\mathbf{x}). As mentioned above, $N$ and $R$ are random variables. As such, it is impossible to know the exact value taken by each one during a given data acquisition. All we can determine - and correct for - is the temporal mean (denoted $\overline{N}$, $\overline{R}$) of these random variables. In addition, we note that the read noise $R(\mathbf{x})$ has zero mean ($\overline{R}=0$). We can thus now write the calibration equation as 
 
-$$E(\mathbf{x}) = \frac{S(\mathbf{x}) - \left[ g(\mathbf{x}) t\overline{N(\mathbf{x}, T)} + B(\mathbf{x})\right]}{g(\mathbf{x}) t}$$
+$$\overline{E}(\mathbf{x}) = \frac{S(\mathbf{x}) - \left[ g(\mathbf{x}) t\overline{N(\mathbf{x}, T)} + B(\mathbf{x})\right]}{g(\mathbf{x})}$$
 
 or, with $D(\mathbf{x}) = g(\mathbf{x}) t \overline{N(\mathbf{x}, T)} + B(\mathbf{x})$
 
-$$E(\mathbf{x}) = \frac{S(\mathbf{x}) - D(\mathbf{x}) }{g(\mathbf{x}) t}$$
+$$E(\mathbf{x}) = \frac{S(\mathbf{x}) - D(\mathbf{x}) }{g(\mathbf{x})}$$
 
 
 - $D(\mathbf{x})$, sum of the thermal signal and [bias](bias.ipynb), can be measured by taking '[dark frames](darks.ipynb)', *i.e.* images taken without illuminating the detector.
