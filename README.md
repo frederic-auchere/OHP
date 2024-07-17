@@ -111,12 +111,12 @@ The objective of the calibration of the detector is to invert the above equation
 
 $$\overline{E}(\mathbf{x}) = \frac{\overline{S}(\mathbf{x}) - \left[ g(\mathbf{x}) t\overline{N}(\mathbf{x}, T) + \overline{B}(\mathbf{x})\right]}{g(\mathbf{x})}$$
 
-or, with $D(\mathbf{x}) = g(\mathbf{x}) t \overline{N}\mathbf{x}, T) + \overline {B}(\mathbf{x})$
+or, with $\overline{D}(\mathbf{x}) = g(\mathbf{x}) t \overline{N}\mathbf{x}, T) + \overline {B}(\mathbf{x})$
 
-$$E(\mathbf{x}) = \frac{S(\mathbf{x}) - D(\mathbf{x}) }{g(\mathbf{x})}$$
+$$\overline{E}(\mathbf{x}) = \frac{\overline{S}(\mathbf{x}) - \overline{D}(\mathbf{x}) }{g(\mathbf{x})}$$
 
 
-- $D(\mathbf{x})$, sum of the thermal signal and [bias](bias.ipynb), can be measured by taking '[dark frames](darks.ipynb)', *i.e.* images taken without illuminating the detector.
+- $\overline{D}(\mathbf{x})$, sum of the thermal signal and [bias](bias.ipynb), can be measured by taking '[dark frames](darks.ipynb)', *i.e.* images taken without illuminating the detector.
 
 - The gain $g(\mathbf{x})$ and read noise $R(\mathbf{x})$ can be measured simultaneously using a method called the [Photon Transfer Curve (PTC)](ptc.ipynb) analysis. Although the read noise does not appear in the calibration equation, it is an important quantity to determine to choose the optimal acquisitaion parameters and to reduce the data.  
 
