@@ -111,7 +111,7 @@ The objective of the calibration of the detector is to invert the above equation
 
 $$\overline{E}(\mathbf{x}) = \frac{\overline{S}(\mathbf{x}) - \left[ g(\mathbf{x}) t\overline{N}(\mathbf{x}, T) + \overline{B}(\mathbf{x})\right]}{g(\mathbf{x})}$$
 
-or, with $\overline{D}(\mathbf{x}) = g(\mathbf{x}) t \overline{N}\mathbf{x}, T) + \overline {B}(\mathbf{x})$
+or, with $\overline{D}(\mathbf{x}) = g(\mathbf{x}) t \overline{N}(\mathbf{x}, T) + \overline {B}(\mathbf{x})$
 
 $$\overline{E}(\mathbf{x}) = \frac{\overline{S}(\mathbf{x}) - \overline{D}(\mathbf{x}) }{g(\mathbf{x})}$$
 
