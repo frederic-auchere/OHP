@@ -109,9 +109,9 @@ $$S(\mathbf{x}) = g(\mathbf{x}) [E(\mathbf{x}) + R(\mathbf{x}) ] + g(\mathbf{x})
 
 The objective of the calibration of the detector is to invert the above equation to be able to determine $E(\mathbf{x})$ knowing the measured signal S(\mathbf{x}). As mentioned above, $N$ and $R$ are random variables. As such, it is impossible to know the exact value taken by each one during a given data acquisition. All we can determine - and correct for - is the temporal mean (denoted $\overline{N}$, $\overline{R}$) of these random variables. In addition, we note that the read noise $R(\mathbf{x})$ has zero mean ($\overline{R}=0$). We can thus now write the calibration equation as 
 
-$$\overline{E}(\mathbf{x}) = \frac{S(\mathbf{x}) - \left[ g(\mathbf{x}) t\overline{N(\mathbf{x}, T)} + B(\mathbf{x})\right]}{g(\mathbf{x})}$$
+$$\overline{E}(\mathbf{x}) = \frac{\overline{S}(\mathbf{x}) - \left[ g(\mathbf{x}) t\overline{N(\mathbf{x}, T)} + \overline{B}(\mathbf{x})\right]}{g(\mathbf{x})}$$
 
-or, with $D(\mathbf{x}) = g(\mathbf{x}) t \overline{N(\mathbf{x}, T)} + B(\mathbf{x})$
+or, with $D(\mathbf{x}) = g(\mathbf{x}) t \overline{N(\mathbf{x}, T)} + \overline {B}(\mathbf{x})$
 
 $$E(\mathbf{x}) = \frac{S(\mathbf{x}) - D(\mathbf{x}) }{g(\mathbf{x})}$$
 
