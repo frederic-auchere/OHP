@@ -32,7 +32,7 @@ Then, using ([Siril](https://www.siril.org/), [old website](https://free-astro.o
 - Refracting telescope: [Skywatcher ESPRIT 100 ED
 ](https://inter-static.skywatcher.com/upfiles/en_download_caty01390352363.pdf), 100 mm diameter, F/5.5
 - Equatorial mount: [Skywatcher AZ-EQ6](https://inter-static.skywatcher.com/upfiles/en_download_caty01353096919.pdf)
-- Camera: [ZWO ASI 2600 MM Cool](https://i.zwoastro.com/zwo-website//manuals/ZWO_ASI_Cooled_Cameras_Quick_Guide.pdf)
+- Camera: [ZWO ASI 2600 MM Cool](https://i.zwoastro.com/zwo-website/manuals/ZWO_ASI2600_Manual_EN.pdf)
 - Filter wheel: [ZWO EFW](https://astronomy-imaging-camera.com/manuals/EFW%20QuickGuide.pdf)
 - Filters: broad band [Luminance, Red, Green, Blue](https://www.baader-planetarium.com/en/filters/l-rgb-cmos-filters/baader-lrgb-filter-set-%E2%80%93-cmos-optimized.html) and narrow band (6 nm) [SII, H&#0945;, OIII](
 https://www.baader-planetarium.com/en/filters/(ultra-)-narrowband-/-highspeed/baader-6.5nm-narrowband-filter-set-%E2%80%93-cmos-optimized-(h-alpha--o-iii--s-ii).html)
