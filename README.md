@@ -39,6 +39,7 @@ Then, using ([Siril](https://www.siril.org/), [old website](https://free-astro.o
 - Filter wheel: [ZWO EFW](https://astronomy-imaging-camera.com/manuals/EFW%20QuickGuide.pdf)
 - Filters: broad band [Luminance, Red, Green, Blue](https://www.baader-planetarium.com/en/filters/l-rgb-cmos-filters/baader-lrgb-filter-set-%E2%80%93-cmos-optimized.html) and narrow band (6 nm) [SII, H&#0945;, OIII](
 https://www.baader-planetarium.com/en/filters/(ultra-)-narrowband-/-highspeed/baader-6.5nm-narrowband-filter-set-%E2%80%93-cmos-optimized-(h-alpha--o-iii--s-ii).html)
+- Focuser: [ZWO EAF](https://i.zwoastro.com/zwo-website/manuals/EAF_Manual_EN_V2.4.pdf)
 - Guide telescope: [EVO guide 50 mm](https://www.pierro-astro.com/materiel-astronomique/autoguidage/lunette-guide-50mm-evoguide-50ed-avec-support-queue-daronde-vixen-m%C3%A2le-sky-watcher_detail) with [field flattener](https://www.pierro-astro.com/materiel-astronomique/autoguidage/correcteur-de-champ-pour-lunette-sky-watcher-evoguide50-sky-watcher-7135_detail) and [ASI 178 MM](https://i.zwoastro.com/zwo-website/manuals/ZWO_Uncooled_Camera_Quick_Guide.pdf) camera 
 
 ### 1.2 Software
