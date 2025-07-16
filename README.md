@@ -4,7 +4,7 @@
 
 Our objective will be to understand the data acquisition chain and the calibration process. This will be performed using a [refracting telescope](https://en.wikipedia.org/wiki/Refracting_telescope), a camera and filters, all commercially available. We will measure the physical properties of the [CMOS sensor](https://en.wikipedia.org/wiki/Active-pixel_sensor), understand the sources of noise in the data, and derive the optimum acquisition parameters. The principles and methods exposed are generic and applicable to amateur equipment and professional giant telescopes alike.
 
-Example pictures made with the Hardware available at the summer school, as described below.
+Example pictures made with the Hardware available at the summer school, as described below:
 
 | ![](pictures/ngc7000.jpg)               | ![](pictures/m13_crop_zoom.jpg) | ![](pictures/veil_crop.jpg) |
 |-----------------------------------------|---------------------------------|-------------------------|
