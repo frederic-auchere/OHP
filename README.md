@@ -2,17 +2,14 @@
 
 ## Objectives
 
-Our objective will be to build collectively images of the [NGC 7000](https://en.wikipedia.org/wiki/North_America_Nebula) / [IC 5070 / IC 5067](https://en.wikipedia.org/wiki/Pelican_Nebule) complex, *a.k.a.* the North America and Pelican nebulae. We will acquire and reduce the data necessary to produce an image in 'natural' RGB colors (similar to the one below, but at higher resolution) and in 'false color' narrow band (SII, H&#0945;, OII, similar to [this](https://en.wikipedia.org/wiki/North_America_Nebula#/media/File:NANeb3PS23_SCNR.jpg)).
+Our objective will be to understand the data acquisition chain and the calibration process. This will be performed using a [refracting telescope](https://en.wikipedia.org/wiki/Refracting_telescope), a camera and filters, all commercially available. We will measure the physical properties of the [CMOS sensor](https://en.wikipedia.org/wiki/Active-pixel_sensor), understand the sources of noise in the data, and derive the optimum acquisition parameters. The principles and methods exposed are generic and applicable to amateur equipment and professional giant telescopes alike.
 
-**The challenge will be to collectively accumulate as many hours of exposure as possible to assemble the best final images**.
-
-Pictures made with the Hardware available at the summer school, as described below.
+Example pictures made with the Hardware available at the summer school, as described below.
 
 | ![](pictures/ngc7000.jpg)               | ![](pictures/m13_crop_zoom.jpg) | ![](pictures/veil_crop.jpg) |
 |-----------------------------------------|---------------------------------|-------------------------|
 | North America & Pelican nebulae | M13 Globular cluster | Eastern Veil Nebula |
 
-Beyond making pretty pictures, our objective will be to understand the data acquisition chain and the calibration process. This will be performed using a [refracting telescope](https://en.wikipedia.org/wiki/Refracting_telescope), a camera and filters, all commercially available. We will measure the physical properties of the [CMOS sensor](https://en.wikipedia.org/wiki/Active-pixel_sensor), understand the sources of noise in the data, and derive the optimum acquisition parameters. The principles and methods exposed are generic and applicable to amateur equipment and professional giant telescopes alike.
 
 Using Python notebooks, we will
 
