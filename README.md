@@ -6,9 +6,9 @@ Our objective will be to understand the data acquisition chain and the calibrati
 
 Example pictures made with the Hardware available at the summer school, as described below:
 
-| ![](pictures/m51.png) | ![](pictures/m13_crop_zoom.jpg) | ![](pictures/veil_crop.jpg) |
-|-----------------------|---------------------------------|-------------------------|
-| M51 whirlpool galaxy  | M13 Globular cluster | Eastern Veil Nebula |
+| ![](pictures/m51.png)      | ![](pictures/m13_crop_zoom.jpg) | ![](pictures/veil_crop.jpg) |
+|----------------------|---------------------------------|-------------------------|
+| M51 whirlpool galaxy | M13 Globular cluster | Eastern Veil Nebula |
 
 
 Using Python notebooks, we will
