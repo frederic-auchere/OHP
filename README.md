@@ -110,16 +110,16 @@ $$S(\mathbf{x}) = g(\mathbf{x}) [E(\mathbf{x}) + R(\mathbf{x}) ] + g(\mathbf{x})
 
 The objective of the calibration of the detector is to invert the above equation to be able to determine $E(\mathbf{x})$ knowing the measured signal $S(\mathbf{x})$. As mentioned above, $N$ and $R$ are random variables. As such, it is impossible to know the exact value taken by each one during a given data acquisition. All we can determine - and correct for - is the temporal mean (denoted $\overline{N}$, $\overline{R}$) of these random variables. In addition, we note that the read noise $R(\mathbf{x})$ has zero mean ($\overline{R}=0$). We can thus now write the calibration equation as 
 
-$$\overline{E}(\mathbf{x}) = \frac{\overline{S}(\mathbf{x}) - \left[ g(\mathbf{x}) t\overline{N}(\mathbf{x}, T) + \overline{B}(\mathbf{x})\right]}{g(\mathbf{x})}$$
+$$\overline{E}(\mathbf{x}) = \frac{\overline{S}(\mathbf{x}) - \left[ g(\mathbf{x}) t\overline{N}(\mathbf{x}, T) + B(\mathbf{x})\right]}{g(\mathbf{x})}$$
 
-or, with $\overline{D}(\mathbf{x}) = g(\mathbf{x}) t \overline{N}(\mathbf{x}, T) + \overline {B}(\mathbf{x})$
+or, with $\overline{D}(\mathbf{x}) = g(\mathbf{x}) t \overline{N}(\mathbf{x}, T) + B(\mathbf{x})$
 
 $$\overline{E}(\mathbf{x}) = \frac{\overline{S}(\mathbf{x}) - \overline{D}(\mathbf{x}) }{g(\mathbf{x})}$$
 
 
 - $\overline{D}(\mathbf{x})$, sum of the thermal signal and [bias](bias.ipynb), can be measured by taking '[dark frames](darks.ipynb)', *i.e.* images taken without illuminating the detector.
 
-- The gain $g(\mathbf{x})$ and read noise $R(\mathbf{x})$ can be measured simultaneously using a method called the [Photon Transfer Curve (PTC)](ptc.ipynb) analysis. Although the read noise does not appear in the calibration equation, it is an important quantity to determine to choose the optimal acquisitaion parameters and to reduce the data.  
+- The gain $g(\mathbf{x})$ and read noise $R(\mathbf{x})$ can be measured simultaneously using a method called the [Photon Transfer Curve (PTC)](ptc.ipynb) analysis. Although the read noise does not appear in the calibration equation, it is an important quantity to determine to choose the optimal acquisition parameters and to reduce the data.  
 
 - The PTC analysis will typically provide the mean value of the gain over the detector. The pixel-to-pixel variations of the gain $g(\mathbf{x})$ are called the '[flat-field](flats.ipynb)' and can be measured using a uniform light source. By extension, the term flat-field is used to describe the combination of all the multiplicative terms that affect the spatial variations of the response of the instrument (*e.g.* the [vignetting](https://en.wikipedia.org/wiki/Vignetting)).  
 
